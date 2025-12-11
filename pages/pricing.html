@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pricing - Business Consulting Services | ConsultPro</title>
+    <meta name="description" content="Transparent pricing plans for our business consulting services. Choose the plan that best fits your needs.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Enhanced horizontal scroll for comparison table on mobile */
+        .compare-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+        }
+        
+        @media (max-width: 992px) {
+            .compare-table-wrapper {
+                display: block;
+                white-space: nowrap;
+            }
+            
+            .compare-table-wrapper table {
+                width: 100%;
+                min-width: 720px;
+            }
+            
+            .compare-table-wrapper th,
+            .compare-table-wrapper td {
+                white-space: nowrap;
+                padding: 0.75rem 0.6rem;
+            }
+        }
+        
+        /* Pricing Toggle Switch Design */
+        .pricing-toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-toggle-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .pricing-toggle-label.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .pricing-toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 32px;
+            background-color: var(--bg-tertiary);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--border-color);
+        }
+        
+        .pricing-toggle-switch.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .pricing-toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-toggle-switch.active .pricing-toggle-slider {
+            transform: translateX(28px);
+        }
+        
+        .pricing-savings-badge {
+            display: inline-block;
+            margin-left: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #28a745;
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .pricing-savings-badge.hidden {
+            display: none;
+        }
+        
+        /* Pricing card price alignment - keep on single line */
+        .pricing-card .card-body {
+            padding: 1.5rem;
+        }
+        
+        .pricing-card h5 {
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        .pricing-card h2 {
+            white-space: nowrap;
+            text-align: center;
+            line-height: 1.2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pricing-card .price-monthly,
+        .pricing-card .price-yearly {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .pricing-card .price-monthly h2,
+        .pricing-card .price-yearly h2 {
+            white-space: nowrap;
+            text-align: center;
+            width: 100%;
+            overflow: visible;
+        }
+        
+        .pricing-card h2 span {
+            white-space: nowrap;
+            display: inline;
+        }
+        
+        /* Pricing cards container - prevent overflow */
+        .pricing-card {
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+        }
+        
+        .pricing-card .card-body {
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Ensure row and columns don't overflow */
+        .section .row.g-4 {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .section .row.g-4 > [class*="col-"] {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            min-width: 0;
+        }
+        
+        /* Responsive font sizes to ensure text fits fully on one line */
+        /* iPad Pro and tablet landscape (1024px - 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .pricing-card .card-body {
+                padding: 1.25rem;
+            }
+            
+            .pricing-card h2 {
+                font-size: 1.65rem;
+            }
+            
+            .pricing-card h5 {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .pricing-card h2 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-card .card-body {
+                padding: 1.25rem;
+            }
+            
+            .pricing-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .pricing-card h5 {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .pricing-card .card-body {
+                padding: 1rem;
+            }
+            
+            .pricing-card h2 {
+                font-size: 1.35rem;
+            }
+            
+            .pricing-card h5 {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .pricing-card h2 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .pricing-card .card-body {
+                padding: 0.875rem;
+            }
+            
+            .pricing-card h2 {
+                font-size: 1.1rem;
+            }
+            
+            .pricing-card h5 {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .pricing-card h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="home-1.html">
+                <img src="../assets/images/favicon.svg" alt="ConsultPro" height="40" width="40" class="me-2">
+                ConsultPro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="home-1.html">Home – General Services</a></li>
+                            <li><a class="dropdown-item" href="home-2.html">Home – Niche / SaaS</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="login.html" class="navbar-btn btn-login me-2">Login</a>
+                    <a href="register.html" class="navbar-btn btn-login me-3">Register</a>
+                    <a href="contact.html" class="btn btn-primary me-3">Get Consultation</a>
+                    <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="hero bg-secondary" style="padding: 4rem 0;">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Choose Your Plan</h1>
+            <p class="lead mb-4">Flexible pricing options designed to scale with your business</p>
+            
+            <!-- Billing Period Toggle -->
+            <div class="pricing-toggle-container">
+                <span class="pricing-toggle-label active" id="monthlyLabel">Monthly</span>
+                <div class="pricing-toggle-switch active" id="pricingToggle">
+                    <div class="pricing-toggle-slider"></div>
+                </div>
+                <span class="pricing-toggle-label" id="yearlyLabel">
+                    Yearly
+                    <span class="pricing-savings-badge hidden" id="savingsBadge">Save 20%</span>
+                </span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Cards -->
+    <section class="section">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Starter Plan -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 pricing-card">
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5>Starter</h5>
+                            <div class="price-monthly">
+                                <h2 class="my-4">$99<span class="text-muted">/mo</span></h2>
+                            </div>
+                            <div class="price-yearly" style="display: none;">
+                                <h2 class="my-4">$79<span class="text-muted">/mo</span></h2>
+                                <p class="text-muted small">Billed annually</p>
+                            </div>
+                            <ul class="list-unstyled mb-4 flex-grow-1 d-flex flex-column justify-content-center">
+                                <li><i class="bi bi-check text-success"></i> Up to 5 team members</li>
+                                <li><i class="bi bi-check text-success"></i> 2 consulting sessions/month</li>
+                                <li><i class="bi bi-check text-success"></i> Email support</li>
+                                <li><i class="bi bi-check text-success"></i> Basic reports</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary mt-auto">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-primary h-100 pricing-card">
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5>Professional</h5>
+                            <div class="price-monthly">
+                                <h2 class="my-4">$199<span class="text-muted">/mo</span></h2>
+                            </div>
+                            <div class="price-yearly" style="display: none;">
+                                <h2 class="my-4">$159<span class="text-muted">/mo</span></h2>
+                                <p class="text-muted small">Billed annually</p>
+                            </div>
+                            <ul class="list-unstyled mb-4 flex-grow-1 d-flex flex-column justify-content-center">
+                                <li><i class="bi bi-check text-success"></i> Up to 15 team members</li>
+                                <li><i class="bi bi-check text-success"></i> 5 consulting sessions/month</li>
+                                <li><i class="bi bi-check text-success"></i> Priority support</li>
+                                <li><i class="bi bi-check text-success"></i> Advanced reports</li>
+                                <li><i class="bi bi-check text-success"></i> Custom strategies</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary mt-auto">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business Plan -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 pricing-card">
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5>Business</h5>
+                            <div class="price-monthly">
+                                <h2 class="my-4">$399<span class="text-muted">/mo</span></h2>
+                            </div>
+                            <div class="price-yearly" style="display: none;">
+                                <h2 class="my-4">$319<span class="text-muted">/mo</span></h2>
+                                <p class="text-muted small">Billed annually</p>
+                            </div>
+                            <ul class="list-unstyled mb-4 flex-grow-1 d-flex flex-column justify-content-center">
+                                <li><i class="bi bi-check text-success"></i> Up to 50 team members</li>
+                                <li><i class="bi bi-check text-success"></i> Unlimited sessions</li>
+                                <li><i class="bi bi-check text-success"></i> 24/7 support</li>
+                                <li><i class="bi bi-check text-success"></i> Comprehensive reports</li>
+                                <li><i class="bi bi-check text-success"></i> Dedicated consultant</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary mt-auto">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 pricing-card">
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5>Enterprise</h5>
+                            <h2 class="my-4">Custom</h2>
+                            <ul class="list-unstyled mb-4 flex-grow-1 d-flex flex-column justify-content-center">
+                                <li><i class="bi bi-check text-success"></i> Unlimited team members</li>
+                                <li><i class="bi bi-check text-success"></i> Custom solutions</li>
+                                <li><i class="bi bi-check text-success"></i> Dedicated account manager</li>
+                                <li><i class="bi bi-check text-success"></i> White-glove service</li>
+                                <li><i class="bi bi-check text-success"></i> SLA guarantee</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary mt-auto">Contact Sales</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Feature Comparison -->
+    <section class="section bg-secondary">
+        <div class="container">
+            <div class="section-title">
+                <h2>Compare Plans</h2>
+            </div>
+            <div class="table-responsive compare-table-wrapper" role="region" aria-label="Compare Plans Table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="text-center">Starter</th>
+                            <th class="text-center">Professional</th>
+                            <th class="text-center">Business</th>
+                            <th class="text-center">Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Consulting Sessions</td>
+                            <td class="text-center">2/month</td>
+                            <td class="text-center">5/month</td>
+                            <td class="text-center">Unlimited</td>
+                            <td class="text-center">Custom</td>
+                        </tr>
+                        <tr>
+                            <td>Team Members</td>
+                            <td class="text-center">Up to 5</td>
+                            <td class="text-center">Up to 15</td>
+                            <td class="text-center">Up to 50</td>
+                            <td class="text-center">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td class="text-center">Email</td>
+                            <td class="text-center">Priority</td>
+                            <td class="text-center">24/7</td>
+                            <td class="text-center">Dedicated</td>
+                        </tr>
+                        <tr>
+                            <td>Reports</td>
+                            <td class="text-center">Basic</td>
+                            <td class="text-center">Advanced</td>
+                            <td class="text-center">Comprehensive</td>
+                            <td class="text-center">Custom</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 0; border-top: none;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="d-inline-flex align-items-center gap-2 mb-0" style="margin-bottom: var(--spacing-md) !important;">
+                        <img src="../assets/images/favicon.svg" alt="ConsultPro" height="24" width="24">
+                        ConsultPro
+                    </h5>
+                    <p>Transforming businesses through expert consulting and strategic guidance.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="service-details.html">Strategic Planning</a></li>
+                        <li><a href="service-details.html">Financial Advisory</a></li>
+                        <li><a href="service-details.html">Operations Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt"></i> 123 Business St, City, Country</li>
+                        <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+                        <li><i class="bi bi-envelope"></i> info@consultpro.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: var(--border-color);">
+            <div class="row">
+                <div class="col-md-6"><p class="mb-0">&copy; 2025 ConsultPro. All rights reserved.</p></div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/pricing.js"></script>
+</body>
+</html>
+

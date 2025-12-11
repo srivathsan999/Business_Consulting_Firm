@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Register - ConsultPro Business Consulting</title>
+    <meta name="description" content="Create a new ConsultPro account to access our consulting services and resources.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/pages/register.html">
+    <meta property="og:title" content="Register - ConsultPro">
+    <meta property="og:description" content="Create a new ConsultPro account">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        body {
+            background-color: var(--bg-primary);
+        }
+        .auth-header {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--bg-primary);
+            border: none;
+            box-shadow: none;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .auth-header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            margin: 0;
+        }
+        .auth-logo:hover {
+            color: var(--primary-color);
+        }
+        .auth-logo img {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+        .auth-logo:hover img {
+            transform: scale(1.05);
+        }
+        /* Ensure register box is centered on all screen sizes */
+        .row.justify-content-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .auth-form-box {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .register-container {
+            min-height: calc(100vh - 150px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+            width: 100%;
+        }
+        
+        .register-container .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .register-card {
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            border-radius: 0.5rem;
+            border: none;
+        }
+        
+        .register-card .card-body {
+            padding: 2.5rem;
+        }
+        
+        @media (max-width: 576px) {
+            .register-card .card-body {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .auth-form-box {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+        /* Tablet view - ensure proper centering */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .register-container {
+                min-height: calc(100vh - 150px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 3rem 0;
+            }
+            
+            .register-container .container {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            .row.justify-content-center {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .col-md-8.col-lg-7.auth-form-box {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 550px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                flex: 0 0 auto !important;
+            }
+            
+            .auth-form-box {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 550px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            /* Ensure form fields are properly aligned on tablet */
+            .form-label {
+                text-align: left !important;
+            }
+            
+            .form-control {
+                text-align: left !important;
+            }
+            
+            .register-card {
+                max-width: 550px !important;
+                width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .register-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .register-header p {
+            margin-bottom: 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Mobile view fixes */
+        @media (max-width: 768px) {
+            /* Ensure body and html don't overflow */
+            body, html {
+                width: 100% !important;
+                max-width: 100vw !important;
+                overflow-x: hidden !important;
+            }
+            
+            /* Fix container width and padding */
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            /* Remove left margin on mobile */
+            .auth-form-box {
+                margin-left: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
+            /* Ensure register card doesn't overflow */
+            .register-card {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            /* Fix card body padding on mobile */
+            .register-card .card-body {
+                padding: 1.5rem !important;
+            }
+            
+            /* Allow header text to wrap on mobile */
+            .register-header h2 {
+                white-space: normal !important;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Ensure form elements don't overflow */
+            .form-control,
+            .form-label,
+            .input-group {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            
+            /* Ensure proper text alignment on mobile */
+            .form-label,
+            .form-control,
+            .form-check-label {
+                text-align: left !important;
+            }
+            
+            /* Fix social buttons grid on mobile */
+            .social-register {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+            
+            /* Ensure text doesn't overflow */
+            .form-check-label,
+            .text-muted,
+            p,
+            label {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+            }
+            
+            /* Fix row and column spacing */
+            .row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .row.g-3 {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            [class*="col-"] {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
+            /* Ensure buttons don't overflow */
+            .btn {
+                width: 100% !important;
+                max-width: 100% !important;
+                white-space: normal !important;
+            }
+            
+            /* Fix input groups on mobile */
+            .input-group {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex-wrap: nowrap !important;
+                position: relative !important;
+                display: flex !important;
+                align-items: stretch !important;
+            }
+            
+            .input-group .form-control {
+                max-width: 100% !important;
+                min-width: 0 !important;
+                flex: 1 1 auto !important;
+            }
+            
+            /* Ensure register container doesn't cause overflow */
+            .register-container {
+                padding: 1rem 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            /* Fix auth header on mobile */
+            .auth-header {
+                padding: 1rem 0 !important;
+            }
+            
+            .auth-header .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            /* Ensure social buttons text wraps */
+            .social-btn span {
+                white-space: normal !important;
+                word-wrap: break-word;
+            }
+            
+            /* Fix eye icon button alignment on mobile */
+            .input-group .btn-outline-secondary {
+                position: absolute !important;
+                right: 0.25rem !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                height: auto !important;
+                width: auto !important;
+                min-width: auto !important;
+                padding: 0.5rem 0.75rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 10 !important;
+                margin: 0 !important;
+                line-height: 1 !important;
+            }
+            
+            .input-group .btn-outline-secondary i {
+                font-size: 1.1rem !important;
+                line-height: 1 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            /* Ensure input has proper padding for eye icon */
+            .input-group .form-control {
+                padding-right: 3.5rem !important;
+            }
+        }
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            width: 100%;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+        .divider span {
+            background: var(--bg-primary);
+            padding: 0 1rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .social-register {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .social-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .password-strength {
+            height: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: var(--transition);
+        }
+        .password-strength.weak .password-strength-bar {
+            width: 33%;
+            background: #dc3545;
+        }
+        .password-strength.medium .password-strength-bar {
+            width: 66%;
+            background: #ffc107;
+        }
+        .password-strength.strong .password-strength-bar {
+            width: 100%;
+            background: #28a745;
+        }
+        
+        /* Password input + eye icon button styling */
+        .input-group {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+        }
+        
+        .input-group .form-control {
+            padding-right: 3rem;
+            width: 100%;
+            flex: 1 1 auto;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: left;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: var(--transition);
+            text-align: left;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .form-check-input {
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+        
+        .form-check-label {
+            text-align: left;
+            line-height: 1.5;
+        }
+        
+        .invalid-feedback {
+            display: block;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #dc3545;
+            text-align: left;
+        }
+        
+        .text-muted {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            text-align: left;
+        }
+        
+        .input-group .btn-outline-secondary {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: auto;
+            border: none;
+            background: transparent;
+            padding: 0 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .input-group .btn-outline-secondary:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+        
+        .input-group .btn-outline-secondary:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        
+        .input-group .btn-outline-secondary i {
+            font-size: 1.1rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Auth Header -->
+    <header class="auth-header">
+        <div class="container">
+            <a href="home-1.html" class="auth-logo">
+                <img src="../assets/images/favicon.svg" alt="ConsultPro">
+                <span>ConsultPro</span>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Register Section -->
+    <section class="register-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-7 auth-form-box">
+                    <div class="card register-card">
+                        <div class="card-body p-5">
+                            <div class="register-header">
+                                <h2 class="mb-2">Create Your Account</h2>
+                                <p class="text-muted">Join ConsultPro and transform your business</p>
+                            </div>
+                            
+                            <!-- Social Register -->
+                            <div class="social-register">
+                                <a href="#" class="social-btn">
+                                    <i class="bi bi-google"></i>
+                                    <span>Google</span>
+                                </a>
+                                <a href="#" class="social-btn">
+                                    <i class="bi bi-microsoft"></i>
+                                    <span>Microsoft</span>
+                                </a>
+                            </div>
+                            
+                            <div class="divider">
+                                <span>Or register with email</span>
+                            </div>
+                            
+                            <!-- Register Form -->
+                            <form class="needs-validation" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="John" required>
+                                        <div class="invalid-feedback">Please provide your first name.</div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Doe" required>
+                                        <div class="invalid-feedback">Please provide your last name.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="company" class="form-label">Company Name <span class="text-muted">(Optional)</span></label>
+                                    <input type="text" class="form-control" id="company" placeholder="Your Company">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" placeholder="Create a strong password" required minlength="8">
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword" aria-label="Toggle password visibility">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength" id="passwordStrength">
+                                        <div class="password-strength-bar"></div>
+                                    </div>
+                                    <small class="text-muted">Password must be at least 8 characters long</small>
+                                    <div class="invalid-feedback">Please create a strong password (min 8 characters).</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword" aria-label="Toggle password visibility">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">Passwords do not match.</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="terms" required>
+                                        <label class="form-check-label" for="terms">
+                                            I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>
+                                        </label>
+                                        <div class="invalid-feedback">You must agree to the terms to register.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            I want to receive updates and newsletter emails
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 mb-3" style="padding: 0.75rem 1.5rem; font-weight: 600;">Create Account</button>
+                                
+                                <div class="text-center mt-3">
+                                    <p class="mb-0">Already have an account? <a href="login.html" class="text-primary fw-semibold">Login</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        // Toggle password visibility
+        function togglePasswordVisibility(buttonId, inputId) {
+            document.getElementById(buttonId)?.addEventListener('click', function() {
+                const passwordInput = document.getElementById(inputId);
+                const icon = this.querySelector('i');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('bi-eye');
+                    icon.classList.add('bi-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('bi-eye-slash');
+                    icon.classList.add('bi-eye');
+                }
+            });
+        }
+        
+        togglePasswordVisibility('togglePassword', 'password');
+        togglePasswordVisibility('toggleConfirmPassword', 'confirmPassword');
+        
+        // Password strength checker
+        document.getElementById('password')?.addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.getElementById('passwordStrength');
+            
+            if (password.length === 0) {
+                strengthBar.className = 'password-strength';
+                return;
+            }
+            
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]+/)) strength++;
+            if (password.match(/[A-Z]+/)) strength++;
+            if (password.match(/[0-9]+/)) strength++;
+            if (password.match(/[$@#&!]+/)) strength++;
+            
+            strengthBar.className = 'password-strength';
+            if (strength <= 2) {
+                strengthBar.classList.add('weak');
+            } else if (strength <= 4) {
+                strengthBar.classList.add('medium');
+            } else {
+                strengthBar.classList.add('strong');
+            }
+        });
+        
+        // Password confirmation validation
+        document.getElementById('confirmPassword')?.addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.setCustomValidity('Passwords do not match');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+        
+        // Form validation
+        const form = document.querySelector('.needs-validation');
+        form?.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    </script>
+</body>
+</html>
+
